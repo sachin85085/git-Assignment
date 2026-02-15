@@ -1,0 +1,12 @@
+[
+    {
+        "id": 1,
+        "name": "Project Alpha",
+        "status": "Active"
+    },
+    {
+        "id": 2,
+        "name": "Project Beta",
+        "status": "Completed"
+    }
+]
