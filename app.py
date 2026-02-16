@@ -62,3 +62,17 @@ def success():
 
 if __name__ == '__main__':
     app.run(debug=True)
+  # --- TASK 3: To-Do List Routes ---
+@app.route('/todo')
+def todo():
+    return render_template('todo.html')
+
+@app.route('/submittodoitem', methods=['POST'])
+def submit_todo():
+    item_name = request.form.get('itemName')
+    item_desc = request.form.get('itemDescription')
+
+    # MongoDB mein data dalna
+    collection.insert_one({'name': item_name, 'desc': item_desc})
+
+    return "To-Do Item Added Successfully!"
