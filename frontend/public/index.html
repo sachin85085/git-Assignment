@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Flask + Express Assignment</title>
+</head>
+<body>
+    <h1>Submit Data to MongoDB</h1>
+    <input type="text" id="username" placeholder="Enter Username">
+    <button onclick="sendData()">Submit</button>
+
+    <p id="response"></p>
+
+    <script>
+        async function sendData() {
+            const username = document.getElementById('username').value;
+            const responseElement = document.getElementById('response');
+
+            try {
+                // This connects your Frontend (3000) to your Backend (5000)
+                const response = await fetch('http://localhost:5000/submit', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ username: username })
+                });
+
+                const result = await response.json();
+                responseElement.innerText = result.message;
+            } catch (error) {
+                responseElement.innerText = "Error: Could not connect to backend";
+                console.error(error);
+            }
+        }
+    </script>
+</body>
+</html>
