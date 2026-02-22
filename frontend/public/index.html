@@ -24,7 +24,10 @@
                 });
 
                 const result = await response.json();
-                responseElement.innerText = result.message;
+                
+                // NAYA CHANGE: Agar message nahi milega, toh pura result print kar dega
+                responseElement.innerText = result.message ? result.message : JSON.stringify(result);
+                
             } catch (error) {
                 responseElement.innerText = "Error: Could not connect to backend";
                 console.error(error);
